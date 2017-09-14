@@ -1,1 +1,5 @@
-<%= controls.to_s %>
+<ul>
+  <% controls_list.each do |control| %>
+    <li><%= control.name %></li>
+  <% end %>
+</ul>

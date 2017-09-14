@@ -26,9 +26,26 @@ configure do
   set :views, File.join(Sinatra::Application.root, "app", "views")
 end
 
-# Set up the controllers and helpers
-Dir[APP_ROOT.join('app', 'controllers', '*.rb')].each { |file| require file }
-Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
+# Automatically load every file in APP_ROOT/app/models/*.rb, e.g.,
+#   autoload "Person", 'app/models/person.rb'
+#
+# We have to do this in case we have models that inherit from each other.
+# If model Student inherits from model Person and app/models/student.rb is
+# required first, it will throw an error saying "Person" is undefined.
+#
+# With this lazy-loading technique, Ruby will try to load app/models/person.rb
+# the first time it sees "Person" and will only throw an exception if
+# that file doesn't define the Person class.
+#
+# See http://www.rubyinside.com/ruby-techniques-revealed-autoload-1652.html
+Dir[APP_ROOT.join('app', 'models', '*.rb')].each do |model_file|
+  filename = File.basename(model_file).gsub('.rb', '')
+  autoload filename.split('_').map(&:capitalize).join, model_file
+end
+
+# Set up the routes and helpers
+Dir[APP_ROOT.join('app', 'routes', '**/*.rb')].each { |file| require file }
+Dir[APP_ROOT.join('app', 'helpers', '**/*.rb')].each { |file| require file }
 
 # Set up the database and models
 require APP_ROOT.join('config', 'database')

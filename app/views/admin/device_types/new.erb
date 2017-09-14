@@ -1,0 +1,9 @@
+<h1>New Device Type</h1>
+
+<%= erb :"admin/device_types/form", locals: {
+  form_url: '/admin/device_types',
+  form_method: 'post',
+  device_type: DeviceType.new(name: '', api_url: '', controls: []),
+  submit_text: 'Create'
+  }
+%>

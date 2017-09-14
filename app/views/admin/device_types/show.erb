@@ -1,0 +1,29 @@
+<h1><%= device_type.name %></h1>
+
+<h5>Controls</h5>
+
+<table class="table-info">
+  <thead>
+    <tr>
+      <th scope="col">Type</th>
+      <th scope="col">Name</th>
+      <th scope="col">Value</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <% device_type.controls.each do |control| %>
+  <tr>
+    <td><%= control['type'] %></td>
+    <td><%= control['name'] %></td>
+    <td><%= control['value'] %></td>
+    <td><%= control['options'].inspect %></td>
+  </tr>
+  <% end %>
+</table>
+
+<footer>
+  <ul>
+    <li><a href=<%= "/admin/device_types/#{device_type.id}/edit"%>>Edit</a></li>
+    <li><a href=<%= "/admin/device_types/#{device_type.id}/delete"%>>Delete</a></li>
+  </ul>
+</footer>

@@ -1,0 +1,49 @@
+<form action="<%= form_url %>" method="post">
+  <input type="hidden" name="_method" value="<%= form_method %>" />
+  <p>
+    <label for="device_type_name">Name</label>
+    <input id="device_type_name "type="text" name="device_type[name]" value="<%= device_type.name %>">
+  </p>
+
+  <p>
+    <label for="device_type_api_url">API Url</label>
+    <input id="device_type_api_url "type="text" name="device_type[api_url]" value="<%= device_type.api_url %>">
+  </p>
+
+  <!-- This block is to display controls when editing -->
+  <% device_type.controls.each do |control| %>
+    <p>
+      <label for="control_type">Type</label>
+      <select id="control_type" name="device_type[controls][][type]" >
+        <% controls_list.each do |c| %>
+          <option value="<%= c.name %>" <%= 'selected' if control['type'] == c.name%> > <%= c.name %></option>
+        <% end %>
+      </select>
+      <label for="control_name">Name</label>
+      <input id="control_name" type="text" name="device_type[controls][][name]" value="<%= control['name'] %>" >
+      <label for="control_options">Options</label>
+      <input id="control_options" type="text" name="device_type[controls][][options]" value="<%= control['options'] %>" >
+    </p>
+  <% end %>
+
+  <!-- This block is dynamically add more controls to the form -->
+  <p class="control-input" style="display:none">
+    <label for="control_type">Type</label>
+    <select id="control_type" name="device_type[controls][][type]" disabled="disabled">
+      <% controls_list.each do |control| %>
+        <option value="<%= control.name %>"> <%= control.name %> </option>
+      <% end %>
+    </select>
+    <label for="control_name">Name</label>
+    <input id="control_name" type="text" name="device_type[controls][][name]" value="" disabled="disabled">
+    <label for="control_options">Options</label>
+    <input id="control_options" type="text" name="device_type[controls][][options]" value="" disabled="disabled">
+  </p>
+
+  <p>
+    <a href="#" class="add-control">Add Control</a>
+  </p>
+
+  <p>
+    <input type="submit" value="<%= submit_text %>">
+  </p>

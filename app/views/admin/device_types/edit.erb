@@ -1,0 +1,9 @@
+<h1>New Device Type</h1>
+
+<%= erb :"admin/device_types/form", locals: {
+  form_url: "/admin/device_types/#{device_type.id}",
+  form_method: 'put',
+  device_type: device_type,
+  submit_text: 'Update'
+  }
+%>
