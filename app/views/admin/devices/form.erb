@@ -1,0 +1,25 @@
+<form action="<%= form_url %>" method="post">
+  <input type="hidden" name="_method" value="<%= form_method %>" />
+  <p>
+    <label for="device_name">Name</label>
+    <input id="device_name "type="text" name="device[name]" value="<%= device.name %>">
+  </p>
+
+  <p>
+    <label for="device_ip">IP</label>
+    <input id="device_ip"type="text" name="device[ip]" value="<%= device.ip %>">
+  </p>
+
+  <p>
+    <label for="device_device_type_id">Device Type</label>
+    <select id="device_device_type_id" name="device[device_type_id]" >
+      <% device_types_select_value.each do |device_type_name, device_type_id| %>
+        <option value="<%= device_type_id %>" <%= 'selected' if device.device_type_id == device_type_id%> > <%= device_type_name %></option>
+      <% end %>
+    </select>
+  </p>
+
+  <p>
+    <input type="submit" value="<%= submit_text %>">
+  </p>
+</form>

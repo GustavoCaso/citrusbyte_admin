@@ -23,8 +23,10 @@ post '/admin/device_types' do
 end
 
 put '/admin/device_types/:id' do
-  DeviceType[params['id']].update(params['device_type'])
-  redirect "/admin/device_types/#{params['id']}"
+  device_type = DeviceType[params['id']]
+  device_type.update(params['device_type'])
+  UpdateDevices.call(params['id'])
+  redirect "/admin/device_types/#{device_type.id}"
 end
 
 get '/admin/device_types/:id/delete' do
