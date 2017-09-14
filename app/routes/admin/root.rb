@@ -1,3 +1,4 @@
 get '/admin' do
-  erb :'admin/list'
+  devices = Device.all
+  erb :'admin/root', locals: { devices: devices }
 end

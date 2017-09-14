@@ -1,3 +1,3 @@
 get '/admin/controls' do
-  erb :'admin/controls'
+  erb :'admin/controls/index'
 end

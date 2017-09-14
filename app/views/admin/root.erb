@@ -1,0 +1,18 @@
+<header>
+  <ul>
+    <li><a href="/admin/controls">Controls</a></li>
+    <li><a href="/admin/device_types">Devices Types</a></li>
+  </ul>
+</header>
+
+<h1>Devices Registered</h1>
+
+<ul>
+  <li><a href="/admin/devices/new">Register New Device</a></li>
+</ul>
+
+<ul>
+  <% devices.each do |devices| %>
+    <li><a href=<%= "/admin/devices/#{devices.id}" %>><%= devices.name %></a></li>
+  <% end %>
+</ul>
