@@ -1,5 +1,11 @@
 <h1><%= device_type.name %></h1>
 
+<% if device_type.api_verb && device_type.api_url %>
+  <h5>Endpoint</h5>
+
+  <p>(<%= device_type.api_verb %>) <%= device_type.api_url %></p>
+<% end %>
+
 <h5>Controls</h5>
 
 <table class="table-info">
