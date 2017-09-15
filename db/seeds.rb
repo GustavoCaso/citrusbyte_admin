@@ -65,19 +65,19 @@ Device.create(name: 'Bedroom Apple TV', ip: '192.168.0.0', device_type_id: apple
     type: 'button',
     name: 'Power',
     options: '',
-    value: 'off'
+    value: false
   },
   {
     type: 'slider',
     name: 'Brightness',
     options: '',
-    value: '0'
+    value: 0
   },
   {
     type: 'slider',
     name: 'Volumen',
     options: '',
-    value: '0'
+    value: 0
   }
 ])
 Device.create(name: 'Livingroom Player', ip: '192.168.1.1', device_type_id: samsung_audio.id, data: [
@@ -85,19 +85,19 @@ Device.create(name: 'Livingroom Player', ip: '192.168.1.1', device_type_id: sams
     type: 'button',
     name: 'Power',
     options: '',
-    value: 'off'
+    value: false
   },
   {
     type: 'slider',
     name: 'Volume',
     options: '',
-    value: '0'
+    value: 0
   },
   {
     type: 'select',
     name: 'Playlist',
     options: 'a,b,c,d',
-    value: ''
+    value: 'a'
   }
 ])
 Device.create(name: 'Livingroom Lights', ip: '192.168.2.2', device_type_id: citrus_lights.id, data: [
@@ -105,6 +105,6 @@ Device.create(name: 'Livingroom Lights', ip: '192.168.2.2', device_type_id: citr
     type: 'button',
     name: 'On/Off',
     options: '',
-    value: 'off'
+    value: false
   }
 ])
