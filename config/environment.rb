@@ -26,6 +26,7 @@ configure do
   set :views, File.join(Sinatra::Application.root, "app", "views")
 end
 
+Sequel::Model.plugin :json_serializer
 # Set up the models
 Dir[APP_ROOT.join('app', 'models', '*.rb')].each do |model_file|
   filename = File.basename(model_file).gsub('.rb', '')
