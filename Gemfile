@@ -2,6 +2,7 @@ source "https://rubygems.org/"
 
 # App Stack
 gem 'sinatra'
+gem 'sinatra-cross_origin'
 
 # Database Stack
 gem "sequel"
