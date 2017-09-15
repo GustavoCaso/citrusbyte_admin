@@ -49,7 +49,7 @@ Dir[APP_ROOT.join('app', 'models', '*.rb')].each do |model_file|
 end
 
 # Set up the routes, helpers
-%w(services helpers routes).each do |folder|
+%w(presenters services helpers routes).each do |folder|
   Dir[APP_ROOT.join('app', folder, '**/*.rb')].each { |file| require file }
 end
 
